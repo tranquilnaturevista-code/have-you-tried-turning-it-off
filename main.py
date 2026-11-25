@@ -17,7 +17,7 @@ import sys
 
 ENTRY = (
     "You're on hour three, so let's skip the script: "
-    "turn it off, turn it on, and if that fails, I'll cry with you."
+    "turn it off, turn it on, and if that fails, I'll cry with you — on the clock."
 )
 
 GATE_MIN = 1
@@ -29,6 +29,8 @@ def gate_problems(text):
     problems = []
     if not text.strip():
         problems.append("entry is blank or only whitespace")
+    if text != text.strip():
+        problems.append("entry has leading or trailing whitespace")
     if not GATE_MIN <= len(text) <= GATE_MAX:
         problems.append(
             "entry is %d characters, gate needs %d-%d"
